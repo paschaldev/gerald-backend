@@ -1,6 +1,6 @@
 import express from 'express'
 import cors from 'cors'
-import session from 'express-session'
+import session from 'cookie-session'
 import {
   authHandler,
   verification,
@@ -16,11 +16,14 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 app.use(session({
   secret: 'gerald-api',
-  resave: false,
+  resave: true,
   saveUninitialized: true,
 }))
 
 app.use(function (req: any, res: express.Response, next: express.NextFunction) {
+  // res.header('Access-Control-Allow-Origin', '*');
+  // res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+
   if (!req.session.auth) {
     req.session.auth = {}
   }
