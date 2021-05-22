@@ -1,6 +1,8 @@
 {
   "scripts": {
-    "start": "nodemon src/index.ts"
+    "build": "yarn run tsc",
+    "dev": "nodemon src/index.ts",
+    "start": "node src/index.js"
   },
   "dependencies": {
     "cors": "^2.8.5",
